@@ -5,9 +5,10 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    working_directory: ~/team-plan
     docker:
       - image: cimg/node:16.3.0
         environment:
@@ -32,12 +33,13 @@ jobs:
           -d $TEST_DATABASE_URL \
           -f ./docker-config/postgres-dev-init.sql
 
-      - run: mkdir team-plan
       - run: yarn install --immutable
+      - run: yarn lint
+      - run: yarn test:ci
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  build-workflow:
+  test:
     jobs:
-      - build
+      - test
