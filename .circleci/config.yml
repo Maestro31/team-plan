@@ -26,11 +26,13 @@ jobs:
       - checkout
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client
-      - run: mkdir team-plan
+      - run: whoami
       - run: |
           psql \
           -d $TEST_DATABASE_URL \
           -f ./docker-config/postgres-dev-init.sql
+
+      - run: mkdir team-plan
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
