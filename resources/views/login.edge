@@ -1,0 +1,19 @@
+@layout('layouts/main')
+@set('title', 'Login page')
+
+@section('body')
+  <div>
+    <form action="{{ route('/login') }}" method="POST">
+      <input type="email" name="email">
+      <input type="password" name="password">
+      <button type="submit">Se connecter</button>
+    </form>
+  </div>
+
+  @if(error)
+    <p>{{ error }}</p>
+  @endif
+
+  <div><a href="{{ route('auth.google') }}" />Je me connecte avec Google</a></div>
+  <div><a href="{{ route('auth.facebook') }}" />Je me connecte avec Facebook</a></div>
+@endsection

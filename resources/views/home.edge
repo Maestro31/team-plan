@@ -1,0 +1,9 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+  <a>
+    <h3>Bonjour {{ auth.user.name }}</h3>
+    <a role="button" href="{{ route('logout') }}" />Je me déconnecte</a>
+  </div>
+@endsection
