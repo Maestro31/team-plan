@@ -1,6 +1,6 @@
 import Route from '@ioc:Adonis/Core/Route'
 import Hash from '@ioc:Adonis/Core/Hash'
-import User from 'App/Models/user'
+import User from 'App/Models/User'
 
 Route.post('login', async ({ auth, request, response, view }) => {
   const email = request.input('email')
