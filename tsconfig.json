@@ -35,5 +35,8 @@
       "@adonisjs/ally",
       "@adonisjs/auth"
     ]
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }
